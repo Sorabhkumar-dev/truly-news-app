@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Truly News</string>
+    <string name="lets_start">Let\'s Start</string>
+    <string name="whats_more"> What\'s More</string>
+    <string name="get_up_to_date">Get Up to Date</string>
+    <string name="ok_get_my_news">OK Get My News!</string>
+    <string name="next">Next</string>
+    <string name="news_on_the_go">News on the Go</string>
+    <string name="start_to_get_updated_with_latest_news">Start to get updated with latest news!</string>
+    <string name="get_latest_news_by_category">Get latest news by category over 20+ category with latest updates!</string>
+    <string name="share_your_knowledge">Share your knowledge by the posting your on newses as well as add your comments on news!</string>
+    <string name="reach_mass_audience">Reach get notified latest news by notification and over news letters!</string>
 </resources>
