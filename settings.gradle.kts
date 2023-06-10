@@ -18,6 +18,7 @@ dependencyResolutionManagement {
             library("airbnb-lottie-compose", "com.airbnb.android:lottie-compose:6.0.0")
             library("compose-bom","androidx.compose:compose-bom:2023.04.01")
             library("compose_material_icon_extended","androidx.compose.material:material-icons-extended:1.4.3")
+            library("compose_navigation","com.google.accompanist:accompanist-navigation-animation:0.30.1")
         }
     }
     repositories {

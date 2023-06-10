@@ -71,4 +71,7 @@ dependencies {
 
     //compose icon extended
     implementation(libs.compose.material.icon.extended)
+
+    //compose navigation
+    implementation(libs.compose.navigation)
 }
