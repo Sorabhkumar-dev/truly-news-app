@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 @Composable
 fun HomeScreen(navController: NavController) {
     Column(modifier = Modifier.fillMaxSize()) {
+
         Text(text = "Sorabh kumar is legend!",style = MaterialTheme.typography.displayLarge)
 
     }

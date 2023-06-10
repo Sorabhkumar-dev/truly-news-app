@@ -49,7 +49,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":data"))
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

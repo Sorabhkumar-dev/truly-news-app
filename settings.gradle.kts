@@ -27,4 +27,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Truly News"
-include(":app")
+include(":app",":data")
