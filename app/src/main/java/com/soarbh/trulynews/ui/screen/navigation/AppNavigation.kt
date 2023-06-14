@@ -8,15 +8,17 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.soarbh.trulynews.ui.screen.home.HomeScreen
+import com.soarbh.trulynews.ui.screen.home.HomeViewModel
 import com.soarbh.trulynews.ui.screen.intro.IntroScreen
 import com.soarbh.trulynews.ui.screen.splash.SplashScreen
+import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppNavigation(navHostController: NavHostController) {
     AnimatedNavHost(
         navController = navHostController,
-        startDestination = ScreenNavigator.SplashScreen.name,
+        startDestination = ScreenNavigator.IntroScreen.name,
         enterTransition = {
             slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(400))
         },
@@ -43,7 +45,8 @@ fun AppNavigation(navHostController: NavHostController) {
             SplashScreen(navHostController)
         }
         composable(ScreenNavigator.HomeScreen.name){
-            HomeScreen(navHostController)
+            val viewModel = getViewModel<HomeViewModel>()
+            HomeScreen(navHostController,viewModel)
         }
     }
 }

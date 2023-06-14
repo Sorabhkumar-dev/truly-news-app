@@ -1,4 +1,4 @@
-package com.soarbh.trulynews
+package com.soarbh.trulynews.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

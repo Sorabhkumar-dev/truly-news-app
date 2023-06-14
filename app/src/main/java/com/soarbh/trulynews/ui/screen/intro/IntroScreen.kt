@@ -26,9 +26,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
@@ -150,7 +148,6 @@ fun IntroScreen(navController: NavController) {
     }
 }
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun IntroSlide(modifier: Modifier) {
     Column(
@@ -158,27 +155,13 @@ fun IntroSlide(modifier: Modifier) {
     ) {
         Text(
             text = stringResource(id = R.string.news_on_the_go),
-            style = MaterialTheme.typography.displayMedium.copy(
-                brush = Brush.horizontalGradient(
-                    listOf(
-                        MaterialTheme.colorScheme.primary.copy(0.5f),
-                        MaterialTheme.colorScheme.secondary.copy(0.5f)
-                    )
-                )
-            )
+            style = MaterialTheme.typography.displayMedium
         )
         Text(
             text = stringResource(id = R.string.start_to_get_updated_with_latest_news),
             modifier = Modifier
                 .padding(top = MaterialTheme.spacing.space16),
-            style = MaterialTheme.typography.headlineLarge.copy(
-                brush = Brush.horizontalGradient(
-                    listOf(
-                        MaterialTheme.colorScheme.primary.copy(0.5f),
-                        MaterialTheme.colorScheme.secondary.copy(0.5f)
-                    )
-                )
-            )
+            style = MaterialTheme.typography.headlineLarge
         )
     }
 }

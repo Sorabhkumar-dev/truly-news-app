@@ -19,6 +19,24 @@ dependencyResolutionManagement {
             library("compose-bom","androidx.compose:compose-bom:2023.04.01")
             library("compose_material_icon_extended","androidx.compose.material:material-icons-extended:1.4.3")
             library("compose_navigation","com.google.accompanist:accompanist-navigation-animation:0.30.1")
+
+            /** <---------------------- data module dependency --------------------> */
+            // ktor client
+            val ktorVersion = "2.3.1"
+            library("ktor-client-core","io.ktor:ktor-client-core:$ktorVersion")
+            library("ktor-client-android","io.ktor:ktor-client-android:$ktorVersion")
+            library("ktor-serialization","io.ktor:ktor-serialization:$ktorVersion")
+            library("ktor-serialization-kotlinx-json","io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            library("ktor-client-logging","io.ktor:ktor-client-logging:$ktorVersion")
+            library("ktor-client-content-negotiation","io.ktor:ktor-client-content-negotiation:$ktorVersion")
+
+            //kotlin json serializer
+            library("kotlinx-serialization-json","org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+
+            /** kotlin-koin */
+            library("koin-android","io.insert-koin:koin-android:3.3.3")
+            library("koin-androidx-compose","io.insert-koin:koin-androidx-compose:3.4.2")
+
         }
     }
     repositories {

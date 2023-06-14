@@ -1,6 +1,9 @@
 plugins {
     id("com.android.library")
+    id("kotlinx-serialization")
+    id("org.jetbrains.kotlin.plugin.serialization")
     kotlin("android")
+
 }
 
 android {
@@ -28,7 +31,21 @@ android {
 }
 
 dependencies {
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
 
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    //ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.serialization)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.content.negotiation)
+
+    //kotlin serializer
+    implementation(libs.kotlinx.serialization.json)
+
+    //koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 }
