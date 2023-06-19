@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.plugin.extraProperties
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.application")
      kotlin("android")
@@ -78,4 +81,11 @@ dependencies {
     //koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+
+    //lifecycle
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.runtime.compose)
+    annotationProcessor(libs.lifecycle.compiler)
 }

@@ -7,9 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
-import com.soarbh.trulynews.ui.screen.home.HomeScreen
-import com.soarbh.trulynews.ui.screen.home.HomeViewModel
+import com.soarbh.trulynews.ui.screen.all_news.AllNewsScreen
+import com.soarbh.trulynews.ui.screen.all_news.AllNewsViewModel
+import com.soarbh.trulynews.ui.screen.filtered_news.FilteredNewsScreen
+import com.soarbh.trulynews.ui.screen.filtered_news.FilteredNewsViewModel
+import com.soarbh.trulynews.ui.screen.home_screen.HomeScreen
+import com.soarbh.trulynews.ui.screen.home_screen.HomeViewModel
 import com.soarbh.trulynews.ui.screen.intro.IntroScreen
+import com.soarbh.trulynews.ui.screen.search_news.SearchNewsScreen
+import com.soarbh.trulynews.ui.screen.search_news.SearchNewsViewModel
 import com.soarbh.trulynews.ui.screen.splash.SplashScreen
 import org.koin.androidx.compose.getViewModel
 
@@ -44,9 +50,24 @@ fun AppNavigation(navHostController: NavHostController) {
         composable(ScreenNavigator.SplashScreen.name){
             SplashScreen(navHostController)
         }
-        composable(ScreenNavigator.HomeScreen.name){
+        composable(ScreenNavigator.TopHeadlineScreen.name){
             val viewModel = getViewModel<HomeViewModel>()
             HomeScreen(navHostController,viewModel)
         }
+        composable(ScreenNavigator.AllNewsScreen.name){
+            val viewModel = getViewModel<AllNewsViewModel>()
+            AllNewsScreen(navController = navHostController, viewModel = viewModel)
+        }
+
+        composable(ScreenNavigator.FilteredNewsScreen.name){
+            val viewModel = getViewModel<FilteredNewsViewModel>()
+            FilteredNewsScreen(navController = navHostController, viewModel = viewModel)
+        }
+
+        composable(ScreenNavigator.SearchNewsScreen.name){
+            val viewModel = getViewModel<SearchNewsViewModel>()
+            SearchNewsScreen(navController = navHostController, viewModel = viewModel)
+        }
+
     }
 }

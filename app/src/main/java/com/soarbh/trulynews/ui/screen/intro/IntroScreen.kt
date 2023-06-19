@@ -1,5 +1,6 @@
 package com.soarbh.trulynews.ui.screen.intro
 
+import android.util.Log
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.soarbh.trulynews.R
+import com.soarbh.trulynews.ui.screen.navigation.ScreenNavigator
 import com.soarbh.trulynews.ui.theme.spacing
 import kotlinx.coroutines.launch
 
@@ -119,8 +121,11 @@ fun IntroScreen(navController: NavController) {
         ElevatedButton(
             onClick = {
                 coroutine.launch {
-                    if (pagerState.currentPage < 4)
+                    if (pagerState.currentPage < 3) {
+                        Log.d("SORABH","----------------->${pagerState.currentPage}")
                         pagerState.scrollToPage(pagerState.currentPage.plus(1))
+                    }
+                  else navController.navigate(ScreenNavigator.TopHeadlineScreen.name)
                 }
             }, modifier = Modifier
                 .fillMaxWidth()

@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.support.kotlinSourceNameOf
+
 pluginManagement {
     repositories {
         google()
@@ -10,7 +12,6 @@ dependencyResolutionManagement {
     versionCatalogs{
         create("libs"){
             library("core-ktx", "androidx.core:core-ktx:1.10.1")
-            library("lifecycle-runtime-ktx", "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
             library("activity-compose", "androidx.activity:activity-compose:1.7.2")
             library("junit", "junit:junit:4.13.2")
             library("ext-junit", "androidx.test.ext:junit:1.1.5")
@@ -36,6 +37,14 @@ dependencyResolutionManagement {
             /** kotlin-koin */
             library("koin-android","io.insert-koin:koin-android:3.3.3")
             library("koin-androidx-compose","io.insert-koin:koin-androidx-compose:3.4.2")
+
+            /** lifecycle */
+            val lifecycleVersion = "2.6.1"
+            library("lifecycle-viewmodel-ktx","androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+            library("lifecycle-viewmodel-compose","androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
+            library("lifecycle-runtime-ktx","androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+            library("lifecycle-runtime-compose","androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
+            library("lifecycle-compiler","androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
 
         }
     }

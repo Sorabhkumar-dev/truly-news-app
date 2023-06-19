@@ -4,7 +4,11 @@
     <string name="whats_more"> What\'s More</string>
     <string name="get_up_to_date">Get Up to Date</string>
     <string name="ok_get_my_news">OK Get My News!</string>
+    <string name="top_headline">Top Headline</string>
+    <string name="all_news">All News</string>
+    <string name="filtered_news">Filtered News</string>
     <string name="next">Next</string>
+    <string name="search_news">Search News</string>
     <string name="news_on_the_go">News on the Go</string>
     <string name="start_to_get_updated_with_latest_news">Start to get updated with latest news!</string>
     <string name="get_latest_news_by_category">Get latest news by category over 20+ category with latest updates!</string>

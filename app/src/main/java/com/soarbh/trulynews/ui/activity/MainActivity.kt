@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.soarbh.trulynews.ui.screen.home_screen.HomeScreen
 import com.soarbh.trulynews.ui.screen.navigation.AppNavigation
 import com.soarbh.trulynews.ui.theme.TrulyNewsTheme
 

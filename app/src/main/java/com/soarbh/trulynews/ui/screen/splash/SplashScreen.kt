@@ -32,7 +32,7 @@ fun SplashScreen(navController: NavController) {
         LaunchedEffect(Unit){
             delay(3000)
             navController.popBackStack(ScreenNavigator.SplashScreen.name,true)
-            navController.navigate(ScreenNavigator.HomeScreen.name)
+            navController.navigate(ScreenNavigator.TopHeadlineScreen.name)
         }
 
         LottieAnimation(
