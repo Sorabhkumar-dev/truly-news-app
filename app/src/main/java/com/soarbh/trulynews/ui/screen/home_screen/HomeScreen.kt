@@ -1,5 +1,6 @@
 package com.soarbh.trulynews.ui.screen.home_screen
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -33,15 +34,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.soarbh.trulynews.R
-import com.soarbh.trulynews.ui.screen.top_headline.TopHeadlineViewModel
+import com.soarbh.trulynews.ui.screen.navigation.AppNavigation
+import com.soarbh.trulynews.ui.screen.navigation.ScreenNavigator
 import com.soarbh.trulynews.ui.theme.spacing
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.get
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
-fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
+fun HomeScreen() {
+    val viewModel: HomeViewModel = get()
+    val navController = rememberAnimatedNavController()
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val coroutineScope = rememberCoroutineScope()
 
@@ -90,28 +96,34 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
                 }
             },
             floatingActionButton = {
-                FloatingActionButton(onClick = {}) {
-                    Row(
-                        modifier = Modifier
-                            .padding(horizontal = MaterialTheme.spacing.space8)
-                            .background(MaterialTheme.colorScheme.primaryContainer)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = " News Search Icon button",
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
+                if (!navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                        ScreenNavigator.SearchNewsScreen.name
+                    )
+                )
+                    FloatingActionButton(onClick = {
+                        navController.navigate(ScreenNavigator.SearchNewsScreen.name)
+                    }) {
+                        Row(
+                            modifier = Modifier
+                                .padding(horizontal = MaterialTheme.spacing.space8)
+                                .background(MaterialTheme.colorScheme.primaryContainer)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Search,
+                                contentDescription = " News Search Icon button",
+                                tint = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
 
-                        Text(
-                            text = stringResource(id = R.string.search_news),
-                            style = MaterialTheme.typography.titleSmall,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
+                            Text(
+                                text = stringResource(id = R.string.search_news),
+                                style = MaterialTheme.typography.titleSmall,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
 
+                        }
                     }
-                }
             }) {
-            Text(text = "Top headline ", Modifier.padding(it))
+            AppNavigation(paddingValues = it, navHostController = navController)
         }
     }
 }

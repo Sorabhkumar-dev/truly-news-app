@@ -3,6 +3,7 @@ package com.soarbh.trulynews.ui.screen.navigation
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -11,20 +12,18 @@ import com.soarbh.trulynews.ui.screen.all_news.AllNewsScreen
 import com.soarbh.trulynews.ui.screen.all_news.AllNewsViewModel
 import com.soarbh.trulynews.ui.screen.filtered_news.FilteredNewsScreen
 import com.soarbh.trulynews.ui.screen.filtered_news.FilteredNewsViewModel
-import com.soarbh.trulynews.ui.screen.home_screen.HomeScreen
-import com.soarbh.trulynews.ui.screen.home_screen.HomeViewModel
-import com.soarbh.trulynews.ui.screen.intro.IntroScreen
 import com.soarbh.trulynews.ui.screen.search_news.SearchNewsScreen
 import com.soarbh.trulynews.ui.screen.search_news.SearchNewsViewModel
-import com.soarbh.trulynews.ui.screen.splash.SplashScreen
+import com.soarbh.trulynews.ui.screen.top_headline.TopHeadlineScreen
+import com.soarbh.trulynews.ui.screen.top_headline.TopHeadlineViewModel
 import org.koin.androidx.compose.getViewModel
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AppNavigation(navHostController: NavHostController) {
+fun AppNavigation(paddingValues: PaddingValues, navHostController: NavHostController) {
     AnimatedNavHost(
         navController = navHostController,
-        startDestination = ScreenNavigator.IntroScreen.name,
+        startDestination = ScreenNavigator.TopHeadlineScreen.name,
         enterTransition = {
             slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(400))
         },
@@ -43,30 +42,42 @@ fun AppNavigation(navHostController: NavHostController) {
                 AnimatedContentScope.SlideDirection.Right, animationSpec = tween(300)
             )
         }) {
-        composable(ScreenNavigator.IntroScreen.name){
-            IntroScreen(navHostController)
+//        composable(ScreenNavigator.IntroScreen.name){
+//            IntroScreen(navHostController)
+//        }
+//
+//        composable(ScreenNavigator.SplashScreen.name){
+//            SplashScreen(navHostController)
+//        }
+        composable(ScreenNavigator.TopHeadlineScreen.name) {
+            val viewModel = getViewModel<TopHeadlineViewModel>()
+            TopHeadlineScreen(paddingValues, navHostController, viewModel)
         }
-
-        composable(ScreenNavigator.SplashScreen.name){
-            SplashScreen(navHostController)
-        }
-        composable(ScreenNavigator.TopHeadlineScreen.name){
-            val viewModel = getViewModel<HomeViewModel>()
-            HomeScreen(navHostController,viewModel)
-        }
-        composable(ScreenNavigator.AllNewsScreen.name){
+        composable(ScreenNavigator.AllNewsScreen.name) {
             val viewModel = getViewModel<AllNewsViewModel>()
-            AllNewsScreen(navController = navHostController, viewModel = viewModel)
+            AllNewsScreen(
+                paddingValues = paddingValues,
+                navController = navHostController,
+                viewModel = viewModel
+            )
         }
 
-        composable(ScreenNavigator.FilteredNewsScreen.name){
+        composable(ScreenNavigator.FilteredNewsScreen.name) {
             val viewModel = getViewModel<FilteredNewsViewModel>()
-            FilteredNewsScreen(navController = navHostController, viewModel = viewModel)
+            FilteredNewsScreen(
+                paddingValues = paddingValues,
+                navController = navHostController,
+                viewModel = viewModel
+            )
         }
 
-        composable(ScreenNavigator.SearchNewsScreen.name){
+        composable(ScreenNavigator.SearchNewsScreen.name) {
             val viewModel = getViewModel<SearchNewsViewModel>()
-            SearchNewsScreen(navController = navHostController, viewModel = viewModel)
+            SearchNewsScreen(
+                paddingValues = paddingValues,
+                navController = navHostController,
+                viewModel = viewModel
+            )
         }
 
     }
