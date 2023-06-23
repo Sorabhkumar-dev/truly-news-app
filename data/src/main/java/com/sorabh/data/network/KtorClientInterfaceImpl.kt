@@ -1,6 +1,6 @@
 package com.sorabh.data.network
 
-import com.sorabh.data.pojo.TopHeadLineResponse
+import com.sorabh.data.pojo.response.TopHeadLineResponse
 import com.sorabh.data.util.ApiRoutes
 import com.sorabh.data.util.Constant
 import io.ktor.client.HttpClient

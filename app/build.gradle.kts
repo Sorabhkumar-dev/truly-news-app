@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.extraProperties
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("com.android.application")
      kotlin("android")
@@ -88,4 +85,7 @@ dependencies {
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.runtime.compose)
     annotationProcessor(libs.lifecycle.compiler)
+
+    //date-store
+    implementation(libs.datastore.preferences)
 }

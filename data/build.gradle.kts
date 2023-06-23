@@ -48,4 +48,8 @@ dependencies {
     //koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+
+    //data-store
+    implementation(libs.datastore.preferences.core)
+    implementation(libs.datastore.preferences)
 }

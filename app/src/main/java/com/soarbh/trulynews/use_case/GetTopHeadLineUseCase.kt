@@ -2,7 +2,7 @@ package com.soarbh.trulynews.use_case
 
 import com.sorabh.data.network.KtorClientRepository
 import com.sorabh.data.network.Result
-import com.sorabh.data.pojo.TopHeadLineResponse
+import com.sorabh.data.pojo.response.TopHeadLineResponse
 import kotlinx.coroutines.flow.Flow
 
 class GetTopHeadLineUseCase constructor(private val repository: KtorClientRepository) :

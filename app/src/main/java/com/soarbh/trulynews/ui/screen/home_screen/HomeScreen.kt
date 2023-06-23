@@ -56,8 +56,7 @@ fun HomeScreen() {
             ModalDrawerSheet {
                 TopNavigationDrawer(modifier = Modifier.fillMaxWidth())
                 viewModel.drawerItems.forEach { drawerItem ->
-                    NavigationDrawerItem(
-                        label = { Text(text = stringResource(id = drawerItem.drawerTitle)) },
+                    NavigationDrawerItem(label = { Text(text = stringResource(id = drawerItem.drawerTitle)) },
                         icon = {
                             Icon(
                                 imageVector = drawerItem.drawerIcon,
@@ -71,58 +70,67 @@ fun HomeScreen() {
                             }
                             viewModel.selectedDrawerItem.value = drawerItem
                             navController.navigate(drawerItem.screen)
-                        }
-                    )
+                        })
                 }
             }
         },
         modifier = Modifier.fillMaxSize(),
+        gesturesEnabled = !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+            ScreenNavigator.SplashScreen.name
+        ) && !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+            ScreenNavigator.IntroScreen.name
+        ),
         drawerState = drawerState
     ) {
-        Scaffold(
-            modifier = Modifier.fillMaxSize(),
-            topBar = {
+        Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+            if (
+                !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                    ScreenNavigator.SplashScreen.name
+                ) && !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                    ScreenNavigator.IntroScreen.name
+                )
+            )
                 TrulyTopBar(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(MaterialTheme.colorScheme.primaryContainer)
                 ) {
                     coroutineScope.launch {
-                        if (drawerState.isClosed)
-                            drawerState.open()
-                        else
-                            drawerState.close()
+                        if (drawerState.isClosed) drawerState.open()
+                        else drawerState.close()
                     }
                 }
-            },
-            floatingActionButton = {
-                if (!navController.currentBackStackEntryAsState().value?.destination?.route.equals(
-                        ScreenNavigator.SearchNewsScreen.name
-                    )
+        }, floatingActionButton = {
+            if (!navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                    ScreenNavigator.SearchNewsScreen.name
+                ) && !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                    ScreenNavigator.SplashScreen.name
+                ) && !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                    ScreenNavigator.IntroScreen.name
                 )
-                    FloatingActionButton(onClick = {
-                        navController.navigate(ScreenNavigator.SearchNewsScreen.name)
-                    }) {
-                        Row(
-                            modifier = Modifier
-                                .padding(horizontal = MaterialTheme.spacing.space8)
-                                .background(MaterialTheme.colorScheme.primaryContainer)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Search,
-                                contentDescription = " News Search Icon button",
-                                tint = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-
-                            Text(
-                                text = stringResource(id = R.string.search_news),
-                                style = MaterialTheme.typography.titleSmall,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-
-                        }
-                    }
+            ) FloatingActionButton(onClick = {
+                navController.navigate(ScreenNavigator.SearchNewsScreen.name)
             }) {
+                Row(
+                    modifier = Modifier
+                        .padding(horizontal = MaterialTheme.spacing.space8)
+                        .background(MaterialTheme.colorScheme.primaryContainer)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = " News Search Icon button",
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+
+                    Text(
+                        text = stringResource(id = R.string.search_news),
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+
+                }
+            }
+        }) {
             AppNavigation(paddingValues = it, navHostController = navController)
         }
     }
@@ -131,24 +139,20 @@ fun HomeScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TrulyTopBar(modifier: Modifier, onNavigationIconClicked: () -> Unit) {
-    CenterAlignedTopAppBar(
-        title = {
-            Text(
-                text = stringResource(id = R.string.app_name),
-                style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.primary)
+    CenterAlignedTopAppBar(title = {
+        Text(
+            text = stringResource(id = R.string.app_name),
+            style = MaterialTheme.typography.titleLarge.copy(color = MaterialTheme.colorScheme.primary)
+        )
+    }, modifier = modifier, navigationIcon = {
+        IconButton(onClick = onNavigationIconClicked) {
+            Icon(
+                imageVector = Icons.Default.Menu,
+                contentDescription = "navigation icon",
+                tint = MaterialTheme.colorScheme.primary
             )
-        },
-        modifier = modifier,
-        navigationIcon = {
-            IconButton(onClick = onNavigationIconClicked) {
-                Icon(
-                    imageVector = Icons.Default.Menu,
-                    contentDescription = "navigation icon",
-                    tint = MaterialTheme.colorScheme.primary
-                )
-            }
         }
-    )
+    })
 }
 
 @Composable

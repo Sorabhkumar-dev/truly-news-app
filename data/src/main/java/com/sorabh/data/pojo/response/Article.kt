@@ -1,4 +1,4 @@
-package com.sorabh.data.pojo
+package com.sorabh.data.pojo.response
 
 
 import kotlinx.serialization.SerialName

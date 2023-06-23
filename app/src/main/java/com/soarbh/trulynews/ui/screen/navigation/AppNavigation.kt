@@ -12,8 +12,10 @@ import com.soarbh.trulynews.ui.screen.all_news.AllNewsScreen
 import com.soarbh.trulynews.ui.screen.all_news.AllNewsViewModel
 import com.soarbh.trulynews.ui.screen.filtered_news.FilteredNewsScreen
 import com.soarbh.trulynews.ui.screen.filtered_news.FilteredNewsViewModel
+import com.soarbh.trulynews.ui.screen.intro.IntroScreen
 import com.soarbh.trulynews.ui.screen.search_news.SearchNewsScreen
 import com.soarbh.trulynews.ui.screen.search_news.SearchNewsViewModel
+import com.soarbh.trulynews.ui.screen.splash.SplashScreen
 import com.soarbh.trulynews.ui.screen.top_headline.TopHeadlineScreen
 import com.soarbh.trulynews.ui.screen.top_headline.TopHeadlineViewModel
 import org.koin.androidx.compose.getViewModel
@@ -23,7 +25,7 @@ import org.koin.androidx.compose.getViewModel
 fun AppNavigation(paddingValues: PaddingValues, navHostController: NavHostController) {
     AnimatedNavHost(
         navController = navHostController,
-        startDestination = ScreenNavigator.TopHeadlineScreen.name,
+        startDestination = ScreenNavigator.SplashScreen.name,
         enterTransition = {
             slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(400))
         },
@@ -42,13 +44,12 @@ fun AppNavigation(paddingValues: PaddingValues, navHostController: NavHostContro
                 AnimatedContentScope.SlideDirection.Right, animationSpec = tween(300)
             )
         }) {
-//        composable(ScreenNavigator.IntroScreen.name){
-//            IntroScreen(navHostController)
-//        }
-//
-//        composable(ScreenNavigator.SplashScreen.name){
-//            SplashScreen(navHostController)
-//        }
+        composable(ScreenNavigator.SplashScreen.name){
+            SplashScreen(navHostController)
+        }
+        composable(ScreenNavigator.IntroScreen.name){
+            IntroScreen(navHostController)
+        }
         composable(ScreenNavigator.TopHeadlineScreen.name) {
             val viewModel = getViewModel<TopHeadlineViewModel>()
             TopHeadlineScreen(paddingValues, navHostController, viewModel)

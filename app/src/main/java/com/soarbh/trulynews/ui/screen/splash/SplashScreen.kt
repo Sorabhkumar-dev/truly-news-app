@@ -30,6 +30,13 @@ fun SplashScreen(navController: NavController) {
         val infiniteLoopComposition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.infinity_loop))
         val infiniteProgress by animateLottieCompositionAsState(infiniteLoopComposition, iterations = LottieConstants.IterateForever )
 
+
+        LaunchedEffect(Unit){
+            delay(3000)
+            navController.popBackStack(ScreenNavigator.SplashScreen.name,true)
+            navController.navigate(ScreenNavigator.IntroScreen.name)
+        }
+
         LottieAnimation(
             composition = rocketComposition,
             progress = { rocketProgress },

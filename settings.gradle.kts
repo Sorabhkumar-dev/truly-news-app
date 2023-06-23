@@ -46,6 +46,12 @@ dependencyResolutionManagement {
             library("lifecycle-runtime-compose","androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
             library("lifecycle-compiler","androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
 
+            /** Preferences DataStore  */
+            val dateStore = "1.0.0"
+            library("datastore-preferences","androidx.datastore:datastore-preferences:$dateStore")
+            library("datastore-preferences-core","androidx.datastore:datastore-preferences-core:$dateStore")
+
+
         }
     }
     repositories {
