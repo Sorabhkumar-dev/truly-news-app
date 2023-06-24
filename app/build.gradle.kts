@@ -88,4 +88,10 @@ dependencies {
 
     //date-store
     implementation(libs.datastore.preferences)
+
+    //paging compose
+    implementation(libs.paging.compose)
+
+    //coil compose
+    implementation(libs.coil.compose)
 }

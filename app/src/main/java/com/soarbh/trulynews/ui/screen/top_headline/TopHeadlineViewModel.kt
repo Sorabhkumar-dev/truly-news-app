@@ -1,27 +1,29 @@
 package com.soarbh.trulynews.ui.screen.top_headline
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.soarbh.trulynews.use_case.GetTopHeadLineUseCase
-import com.sorabh.data.network.Result
-import com.sorabh.data.pojo.response.TopHeadLineResponse
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import com.soarbh.trulynews.R
+import com.soarbh.trulynews.TrulyApp
+import com.soarbh.trulynews.ui.screen.paging_source.TopHeadlineSource
+import com.sorabh.data.network.KtorClientRepository
+import com.sorabh.data.pojo.request.TopHeadlineRequest
 
-class TopHeadlineViewModel constructor(private val topHeadLineUseCase: GetTopHeadLineUseCase) :
+class TopHeadlineViewModel constructor(private val repository: KtorClientRepository) :
     ViewModel() {
-    private val _topHeadLinesFlow: MutableStateFlow<Result<TopHeadLineResponse>> =
-        MutableStateFlow(Result.Loading())
-    val topHeadLinesFlow = _topHeadLinesFlow.asStateFlow()
 
     init {
         getTopHeadLines()
     }
 
-    private fun getTopHeadLines() {
-        viewModelScope.launch {
-            topHeadLineUseCase(Unit).collect { _topHeadLinesFlow.value = it }
-        }
-    }
+    fun getTopHeadLines() = Pager(
+        config = PagingConfig(pageSize = 10),
+        pagingSourceFactory = {
+        TopHeadlineSource(
+            repository = repository,
+            topHeadlineRequest = TopHeadlineRequest(
+                10,10,TrulyApp.R().getString(R.string.news_api_key),"in",null,null
+            )
+        )}
+    )
 }

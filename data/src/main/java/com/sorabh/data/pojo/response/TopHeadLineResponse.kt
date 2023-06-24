@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class TopHeadLineResponse(
     @SerialName("articles")
-    val articles: List<Article?>?,
+    val articles: List<Article>?,
     @SerialName("status")
     val status: String?,
     @SerialName("totalResults")

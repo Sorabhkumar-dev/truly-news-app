@@ -52,4 +52,7 @@ dependencies {
     //data-store
     implementation(libs.datastore.preferences.core)
     implementation(libs.datastore.preferences)
+
+    //paging compose
+    implementation(libs.paging.compose)
 }

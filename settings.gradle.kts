@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.support.kotlinSourceNameOf
-
 pluginManagement {
     repositories {
         google()
@@ -50,6 +48,13 @@ dependencyResolutionManagement {
             val dateStore = "1.0.0"
             library("datastore-preferences","androidx.datastore:datastore-preferences:$dateStore")
             library("datastore-preferences-core","androidx.datastore:datastore-preferences-core:$dateStore")
+
+            /** Compose Paging */
+            library("paging-compose","androidx.paging:paging-compose:1.0.0-alpha20")
+
+            /** Show image from network */
+            library("coil-compose","io.coil-kt:coil-compose:2.4.0")
+
 
 
         }

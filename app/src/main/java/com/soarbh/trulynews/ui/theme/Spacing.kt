@@ -18,6 +18,9 @@ class Spacing {
     val space24:Dp = 24.dp
     val space48:Dp = 48.dp
     val space128:Dp = 128.dp
+    val space150:Dp = 150.dp
+    val space100:Dp = 100.dp
+    val space300:Dp = 300.dp
     val space500:Dp = 500.dp
 }
 

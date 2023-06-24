@@ -8,6 +8,10 @@
     <string name="all_news">All News</string>
     <string name="filtered_news">Filtered News</string>
     <string name="next">Next</string>
+    <string name="label_na">N/A</string>
+    <string name="error_text">ho oh! Something went wrong!</string>
+    <string name="loading_text">Wait! Loading…</string>
+    <string name="no_data_to_show">No Data to show!</string>
     <string name="search_news">Search News</string>
     <string name="news_on_the_go">News on the Go</string>
     <string name="start_to_get_updated_with_latest_news">Start to get updated with latest news!</string>
