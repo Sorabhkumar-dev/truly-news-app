@@ -11,7 +11,7 @@ import org.koin.dsl.module
 val uiModule = module {
     viewModel{ HomeViewModel() }
     viewModel{ TopHeadlineViewModel(get())}
-    viewModel{ AllNewsViewModel() }
+    viewModel{ AllNewsViewModel(get()) }
     viewModel{ FilteredNewsViewModel() }
     viewModel { SearchNewsViewModel() }
 }

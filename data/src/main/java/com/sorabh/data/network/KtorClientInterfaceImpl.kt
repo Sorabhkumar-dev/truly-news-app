@@ -1,7 +1,8 @@
 package com.sorabh.data.network
 
+import com.sorabh.data.pojo.request.AllNewsRequest
 import com.sorabh.data.pojo.request.TopHeadlineRequest
-import com.sorabh.data.pojo.response.TopHeadLineResponse
+import com.sorabh.data.pojo.response.NewsResponse
 import com.sorabh.data.util.ApiRoutes
 import com.sorabh.data.util.Constant
 import io.ktor.client.HttpClient
@@ -11,7 +12,7 @@ import io.ktor.client.request.parameter
 
 class KtorClientInterfaceImpl constructor(private val httpClient: HttpClient) :
     KtorClientInterface {
-    override suspend fun getTopHeadLines(topHeadlineRequest: TopHeadlineRequest): TopHeadLineResponse =
+    override suspend fun getTopHeadLines(topHeadlineRequest: TopHeadlineRequest): NewsResponse =
         httpClient.get(Constant.BASE_URL.plus(ApiRoutes.TOP_HEADLINES_REQUEST)) {
             parameter("page",topHeadlineRequest.page)
             parameter("pageSize",topHeadlineRequest.pageSize)
@@ -24,6 +25,24 @@ class KtorClientInterfaceImpl constructor(private val httpClient: HttpClient) :
                 parameter("category", category)
             }
             topHeadlineRequest.sources?.let{ sources ->
+                parameter("sources",sources)
+            }
+        }.body()
+
+    override suspend fun getAllNewses(allNewsRequest: AllNewsRequest): NewsResponse =
+        httpClient.get(Constant.BASE_URL.plus(ApiRoutes.TOP_HEADLINES_REQUEST)) {
+            parameter("page",allNewsRequest.topHeadlineRequest.page)
+            parameter("pageSize",allNewsRequest.topHeadlineRequest.pageSize)
+            parameter("apiKey", allNewsRequest.topHeadlineRequest.apiKey)
+            parameter("searchIn",allNewsRequest.searchToken)
+
+            allNewsRequest.topHeadlineRequest.country?.let { country ->
+                parameter("country", country)
+            }
+            allNewsRequest.topHeadlineRequest.category?.let { category ->
+                parameter("category", category)
+            }
+            allNewsRequest.topHeadlineRequest.sources?.let{ sources ->
                 parameter("sources",sources)
             }
         }.body()
