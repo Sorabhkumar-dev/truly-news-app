@@ -25,7 +25,7 @@ import org.koin.androidx.compose.getViewModel
 fun AppNavigation(paddingValues: PaddingValues, navHostController: NavHostController) {
     AnimatedNavHost(
         navController = navHostController,
-        startDestination = ScreenNavigator.SplashScreen.name,
+        startDestination = ScreenNavigator.SearchNewsScreen.name,
         enterTransition = {
             slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(400))
         },

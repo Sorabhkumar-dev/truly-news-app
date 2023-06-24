@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -38,7 +39,8 @@ fun NewsItemCard(modifier: Modifier, article: Article) {
                         start = MaterialTheme.spacing.space8,
                         top = MaterialTheme.spacing.space16,
                         end = MaterialTheme.spacing.space8
-                    ).clip(MaterialTheme.shapes.medium),
+                    )
+                    .clip(MaterialTheme.shapes.medium),
                 imageUrl = article.urlToImage ?: "",
                 description = article.title ?: ""
             )
@@ -110,6 +112,63 @@ fun NewsItemCard(modifier: Modifier, article: Article) {
                 )
             )
 
+        }
+    }
+}
+
+@Composable
+fun SearchNewsItemCard(modifier: Modifier, article: Article) {
+    ElevatedCard(modifier = modifier) {
+        Row {
+            ShowImageFromUrl(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(MaterialTheme.spacing.space150)
+                    .padding(
+                        start = MaterialTheme.spacing.space16,
+                        top = MaterialTheme.spacing.space8,
+                        bottom = MaterialTheme.spacing.space8
+                    )
+                    .clip(MaterialTheme.shapes.small),
+                imageUrl = article.urlToImage ?: "",
+                description = article.title ?: ""
+            )
+            Column(modifier = Modifier.weight(2f)) {
+                Text(
+                    text = article.title ?: stringResource(id = R.string.label_na),
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.padding(
+                        start = MaterialTheme.spacing.space8,
+                        top = MaterialTheme.spacing.space16,
+                        end = MaterialTheme.spacing.space8
+                    ), maxLines = 1,
+                    fontWeight = FontWeight.Bold
+                )
+
+                Text(
+                    text = article.description ?: stringResource(id = R.string.label_na),
+                    modifier = Modifier.padding(
+                        start = MaterialTheme.spacing.space8,
+                        top = MaterialTheme.spacing.space4,
+                        end = MaterialTheme.spacing.space8
+                    ),
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+
+                Text(
+                    text = article.publishedAt?.let {
+                        DateUtil.getUserFormat(
+                            DateUtil.getLocalDateTimeFormServerDate(it)
+                        )
+                    } ?: stringResource(id = R.string.label_na),
+                    modifier = Modifier.padding(start = MaterialTheme.spacing.space8,top = MaterialTheme.spacing.space8),
+                    style = MaterialTheme.typography.bodySmall,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
     }
 }

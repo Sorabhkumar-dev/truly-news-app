@@ -71,8 +71,7 @@ fun AllNewsScreenContent(
                 )
             }
 
-            is LoadState.NotLoading ->
-                if (newsPagingDate.itemSnapshotList.isEmpty() && newsPagingDate.loadState.refresh.endOfPaginationReached)
+            is LoadState.NotLoading -> if (newsPagingDate.itemSnapshotList.items.isEmpty())
                     item {
                         LottieAnim(
                             modifier = Modifier
