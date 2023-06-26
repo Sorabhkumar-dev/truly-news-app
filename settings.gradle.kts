@@ -18,6 +18,7 @@ dependencyResolutionManagement {
             library("compose-bom","androidx.compose:compose-bom:2023.04.01")
             library("compose_material_icon_extended","androidx.compose.material:material-icons-extended:1.4.3")
             library("compose_navigation","com.google.accompanist:accompanist-navigation-animation:0.30.1")
+            library("compose-material3","androidx.compose.material3:material3:1.1.1")
 
             /** <---------------------- data module dependency --------------------> */
             // ktor client

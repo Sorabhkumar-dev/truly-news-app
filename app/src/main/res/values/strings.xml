@@ -4,11 +4,15 @@
     <string name="whats_more"> What\'s More</string>
     <string name="get_up_to_date">Get Up to Date</string>
     <string name="ok_get_my_news">OK Get My News!</string>
+    <string name="get_filtered_news">Get Filtered News</string>
     <string name="top_headline">Top Headline</string>
     <string name="all_news">All News</string>
     <string name="filtered_news">Filtered News</string>
     <string name="next">Next</string>
     <string name="label_na">N/A</string>
+    <string name="category">Category</string>
+    <string name="countries">Countries</string>
+    <string name="source">Source</string>
     <string name="error_text">ho oh! Something went wrong!</string>
     <string name="loading_text">Wait! Loading…</string>
     <string name="no_data_to_show">No Data to show!</string>

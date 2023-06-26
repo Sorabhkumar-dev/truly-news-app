@@ -107,6 +107,8 @@ fun HomeScreen() {
                     ScreenNavigator.SplashScreen.name
                 ) && !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
                     ScreenNavigator.IntroScreen.name
+                ) && !navController.currentBackStackEntryAsState().value?.destination?.route.equals(
+                    ScreenNavigator.FilteredNewsScreen.name
                 )
             ) FloatingActionButton(onClick = {
                 navController.navigate(ScreenNavigator.SearchNewsScreen.name)

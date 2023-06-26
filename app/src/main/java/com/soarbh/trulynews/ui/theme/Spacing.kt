@@ -13,7 +13,9 @@ class Spacing {
     val space3:Dp = 3.dp
     val space4:Dp = 4.dp
     val space5:Dp = 5.dp
+    val space6:Dp = 6.dp
     val space8:Dp = 8.dp
+    val space12:Dp = 12.dp
     val space16:Dp = 16.dp
     val space24:Dp = 24.dp
     val space48:Dp = 48.dp

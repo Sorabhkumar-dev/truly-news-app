@@ -12,6 +12,6 @@ val uiModule = module {
     viewModel{ HomeViewModel() }
     viewModel{ TopHeadlineViewModel(get())}
     viewModel{ AllNewsViewModel(get()) }
-    viewModel{ FilteredNewsViewModel() }
+    viewModel{ FilteredNewsViewModel(get()) }
     viewModel { SearchNewsViewModel(get()) }
 }
